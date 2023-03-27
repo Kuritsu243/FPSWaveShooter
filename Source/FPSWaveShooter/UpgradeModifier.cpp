@@ -3,6 +3,9 @@
 
 #include "UpgradeModifier.h"
 
+#include "GameFramework/Character.h"
+#include "Kismet/GameplayStatics.h"
+
 // Sets default values for this component's properties
 UUpgradeModifier::UUpgradeModifier()
 {
@@ -18,6 +21,13 @@ UUpgradeModifier::UUpgradeModifier()
 void UUpgradeModifier::BeginPlay()
 {
 	Super::BeginPlay();
+	Player = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
+	PlayerHealth = Player->FindComponentByClass<UPlayerHealthComponent>();
+	SpeedUpgradeBaseVal = SpeedUpgradeModifier;
+	DamageUpgradeBaseVal = DamageUpgradeModifier;
+
+	SpeedUpgradeModifier = 0.0f;
+	DamageUpgradeModifier = 0.0f;
 	// ...
 	
 }
@@ -31,9 +41,23 @@ void UUpgradeModifier::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	// ...
 }
 
-void UUpgradeModifier::RestoreHealth()
+void UUpgradeModifier::RestoreHealth() const
 {
-	
+	if (PlayerHealth->CurrentHealth + HealthRestoreAmount >= PlayerHealth->MaxHealth)
+		PlayerHealth->CurrentHealth = PlayerHealth->MaxHealth;
+	else
+		PlayerHealth->CurrentHealth += HealthRestoreAmount;
+}
+
+void UUpgradeModifier::UpgradeHealth() const
+{
+	PlayerHealth->MaxHealth += HealthUpgradeModifier;
+	PlayerHealth->CurrentHealth += HealthUpgradeModifier;
+}
+
+void UUpgradeModifier::UpgradeSpeed() 
+{
+	SpeedUpgradeModifier += SpeedUpgradeBaseVal;
 }
 
 

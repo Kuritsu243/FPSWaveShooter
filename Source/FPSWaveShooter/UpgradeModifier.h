@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "PlayerHealthComponent.h"
 #include "Components/ActorComponent.h"
 #include "UpgradeModifier.generated.h"
 
@@ -27,9 +28,11 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UPROPERTY(EditAnywhere)
+	int HealthRestoreAmount;
+	UPROPERTY(EditAnywhere)
 	int HealthUpgradeModifier;
 	UPROPERTY(EditAnywhere)
-	int SpeedUpgradeModifier;
+	float SpeedUpgradeModifier;
 	UPROPERTY(EditAnywhere)
 	int DamageUpgradeModifier;
 	UPROPERTY(EditAnywhere)
@@ -44,10 +47,25 @@ public:
 	int DamageUpgradeCount;
 	UPROPERTY(BlueprintReadOnly)
 	int FireRateUpgradeCount;
-
+	
+	UPROPERTY()
+	float SpeedUpgradeBaseVal;
+	UPROPERTY()
+	float DamageUpgradeBaseVal;
+	
 	UFUNCTION()
-	void RestoreHealth();
+	void RestoreHealth() const;
+	UFUNCTION()
+	void UpgradeHealth() const;
+	UFUNCTION()
+	void UpgradeSpeed();
 
+	
+
+	UPROPERTY()
+	ACharacter* Player;
+	UPROPERTY()
+	UPlayerHealthComponent* PlayerHealth;
 	
 
 

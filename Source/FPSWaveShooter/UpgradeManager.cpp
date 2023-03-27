@@ -21,6 +21,8 @@ void AUpgradeManager::BeginPlay()
 	Super::BeginPlay();
 	Player = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
 	UpgradeModifier = Player->FindComponentByClass<UUpgradeModifier>();
+	GameModeBase = UGameplayStatics::GetGameMode(GetWorld());
+	CurrentGameMode = Cast<AFPSWaveShooterGameMode>(GameModeBase);
 }
 
 // Called every frame
@@ -72,17 +74,25 @@ void AUpgradeManager::UpgradeOneChosen()
 	{
 	case EPlayerUpgrade::HealthUpgrade:
 		UpgradeModifier->HealthUpgradeCount++;
+		CurrentGameMode->UpgradeChosen();
 		break;
 	case EPlayerUpgrade::SpeedUpgrade:
 		UpgradeModifier->SpeedUpgradeCount++;
+		UpgradeModifier->UpgradeSpeed();
+		CurrentGameMode->UpgradeChosen();
 		break;
 	case EPlayerUpgrade::DamageUpgrade:
 		UpgradeModifier->DamageUpgradeCount++;
+		CurrentGameMode->UpgradeChosen();
 		break;
 	case EPlayerUpgrade::HealthRestore:
 		UpgradeModifier->RestoreHealth();
+		CurrentGameMode->UpgradeChosen();
 		break;
-	case EPlayerUpgrade::FireRateUpgrade: break;
+	case EPlayerUpgrade::FireRateUpgrade:
+		UpgradeModifier->FireRateUpgradeCount++;
+		CurrentGameMode->UpgradeChosen();
+		break;
 	default: ;
 	}
 }
@@ -91,11 +101,27 @@ void AUpgradeManager::UpgradeTwoChosen()
 {
 	switch (RandomUpgrade2)
 	{
-	case EPlayerUpgrade::HealthUpgrade: break;
-	case EPlayerUpgrade::SpeedUpgrade: break;
-	case EPlayerUpgrade::DamageUpgrade: break;
-	case EPlayerUpgrade::HealthRestore: break;
-	case EPlayerUpgrade::FireRateUpgrade: break;
+	case EPlayerUpgrade::HealthUpgrade:
+		UpgradeModifier->HealthUpgradeCount++;
+		CurrentGameMode->UpgradeChosen();
+		break;
+	case EPlayerUpgrade::SpeedUpgrade:
+		UpgradeModifier->SpeedUpgradeCount++;
+		UpgradeModifier->UpgradeSpeed();
+		CurrentGameMode->UpgradeChosen();
+		break;
+	case EPlayerUpgrade::DamageUpgrade:
+		UpgradeModifier->DamageUpgradeCount++;
+		CurrentGameMode->UpgradeChosen();
+		break;
+	case EPlayerUpgrade::HealthRestore:
+		UpgradeModifier->RestoreHealth();
+		CurrentGameMode->UpgradeChosen();
+		break;
+	case EPlayerUpgrade::FireRateUpgrade:
+		UpgradeModifier->FireRateUpgradeCount++;
+		CurrentGameMode->UpgradeChosen();
+		break;
 	default: ;
 	}
 }
@@ -104,11 +130,27 @@ void AUpgradeManager::UpgradeThreeChosen()
 {
 	switch (RandomUpgrade3)
 	{
-	case EPlayerUpgrade::HealthUpgrade: break;
-	case EPlayerUpgrade::SpeedUpgrade: break;
-	case EPlayerUpgrade::DamageUpgrade: break;
-	case EPlayerUpgrade::HealthRestore: break;
-	case EPlayerUpgrade::FireRateUpgrade: break;
+	case EPlayerUpgrade::HealthUpgrade:
+		UpgradeModifier->HealthUpgradeCount++;
+		CurrentGameMode->UpgradeChosen();
+		break;
+	case EPlayerUpgrade::SpeedUpgrade:
+		UpgradeModifier->SpeedUpgradeCount++;
+		UpgradeModifier->UpgradeSpeed();
+		CurrentGameMode->UpgradeChosen();
+		break;
+	case EPlayerUpgrade::DamageUpgrade:
+		UpgradeModifier->DamageUpgradeCount++;
+		CurrentGameMode->UpgradeChosen();
+		break;
+	case EPlayerUpgrade::HealthRestore:
+		UpgradeModifier->RestoreHealth();
+		CurrentGameMode->UpgradeChosen();
+		break;
+	case EPlayerUpgrade::FireRateUpgrade:
+		UpgradeModifier->FireRateUpgradeCount++;
+		CurrentGameMode->UpgradeChosen();
+		break;
 	default: ;
 	}
 }

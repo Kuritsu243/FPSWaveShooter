@@ -7,6 +7,7 @@
 #include "GameFramework/Actor.h"
 #include "UpgradeManager.generated.h"
 
+class AFPSWaveShooterGameMode;
 UENUM()
 enum class EPlayerUpgrade : uint8
 {
@@ -49,7 +50,12 @@ public:
 	ACharacter* Player;
 	UPROPERTY()
 	UUpgradeModifier* UpgradeModifier;
+
+	UPROPERTY()
+	AGameModeBase* GameModeBase;
 	
+	UPROPERTY()
+	AFPSWaveShooterGameMode* CurrentGameMode;
 
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -80,5 +86,5 @@ public:
 	void UpgradeTwoChosen();
 	
 	UFUNCTION(BlueprintCallable)
-	void UpgradeThreeChosen();	
+	void UpgradeThreeChosen();
 };

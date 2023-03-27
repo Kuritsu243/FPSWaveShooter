@@ -66,9 +66,21 @@ int AFPSWaveShooterGameMode::RandomUpgradeIndex()
 
 void AFPSWaveShooterGameMode::ShowUpgradesUI()
 {
-	UUserWidget* UpgradesUI_Widget = CreateWidget(GetWorld(), UpgradesUIClass);
-	UpgradesUI_Widget->AddToViewport();
+	UpgradesUI = CreateWidget(GetWorld(), UpgradesUIClass);
+	UpgradesUI->AddToViewport();
 	UGameplayStatics::SetGamePaused(GetWorld(), true);
 	UGameplayStatics::GetPlayerCharacter(this, 0);
 	GetWorld()->GetFirstPlayerController()->bShowMouseCursor = true;
+}
+
+void AFPSWaveShooterGameMode::UpgradeChosen()
+{
+	UpgradesUI->RemoveFromViewport();
+	GameplayUI = CreateWidget(GetWorld(), GameplayUIClass);
+	GameplayUI->AddToViewport();
+	GetWorld()->GetFirstPlayerController()->bShowMouseCursor = false;
+	UGameplayStatics::SetGamePaused(GetWorld(), false);
+	UGameplayStatics::GetPlayerCharacter(this, 0);
+
+	
 }

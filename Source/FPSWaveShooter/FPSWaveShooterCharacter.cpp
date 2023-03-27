@@ -7,6 +7,7 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
 #include "GameFramework/InputSettings.h"
+#include "Kismet/GameplayStatics.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -41,6 +42,7 @@ void AFPSWaveShooterCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
+	UpgradeModifierComponent =  UGameplayStatics::GetPlayerCharacter(GetWorld(), 0)->FindComponentByClass<UUpgradeModifier>();
 
 }
 
@@ -107,20 +109,28 @@ void AFPSWaveShooterCharacter::EndTouch(const ETouchIndex::Type FingerIndex, con
 
 void AFPSWaveShooterCharacter::MoveForward(float Value)
 {
-	if (Value != 0.0f)
-	{
-		// add movement in that direction
-		AddMovementInput(GetActorForwardVector(), Value);
-	}
+	if (Value == 0.0f) return;
+	
+	if (Value > 0.0f)
+		Value += UpgradeModifierComponent->SpeedUpgradeModifier;
+	else if (Value < 0.0f)
+		Value -= UpgradeModifierComponent->SpeedUpgradeModifier;
+	
+	AddMovementInput(GetActorForwardVector(), Value);
+	
 }
 
 void AFPSWaveShooterCharacter::MoveRight(float Value)
 {
-	if (Value != 0.0f)
-	{
+	if (Value == 0.0f) return;
+
+	if (Value > 0.0f)
+		Value += UpgradeModifierComponent->SpeedUpgradeModifier;
+	else if (Value < 0.0f)
+		Value -= UpgradeModifierComponent->SpeedUpgradeModifier;
 		// add movement in that direction
-		AddMovementInput(GetActorRightVector(), Value);
-	}
+	AddMovementInput(GetActorRightVector(), Value);
+	
 }
 
 void AFPSWaveShooterCharacter::TurnAtRate(float Rate)

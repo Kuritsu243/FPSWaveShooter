@@ -70,11 +70,21 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<UUserWidget> UpgradesUIClass;
 
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UUserWidget> GameplayUIClass;
+	
 	UPROPERTY()
 	UUserWidget* UpgradesUI;
+
+	UPROPERTY()
+	UUserWidget* GameplayUI;
 	
 	UFUNCTION(BlueprintCallable)
 	void ShowUpgradesUI();
+
+	UFUNCTION(BlueprintCallable)
+	void UpgradeChosen();
+
 
 	UPROPERTY()
 	UGameInstance* GameInstance;

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "UpgradeModifier.h"
 #include "GameFramework/Character.h"
 #include "FPSWaveShooterCharacter.generated.h"
 
@@ -104,6 +105,9 @@ public:
 
 	UPROPERTY()
 	bool bIsDead;
+	
+	UPROPERTY()
+	UUpgradeModifier* UpgradeModifierComponent;
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void Die();
