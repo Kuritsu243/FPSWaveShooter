@@ -74,6 +74,7 @@ void AUpgradeManager::UpgradeOneChosen()
 	{
 	case EPlayerUpgrade::HealthUpgrade:
 		UpgradeModifier->HealthUpgradeCount++;
+		UpgradeModifier->UpgradeHealth();
 		CurrentGameMode->UpgradeChosen();
 		break;
 	case EPlayerUpgrade::SpeedUpgrade:
@@ -86,11 +87,13 @@ void AUpgradeManager::UpgradeOneChosen()
 		CurrentGameMode->UpgradeChosen();
 		break;
 	case EPlayerUpgrade::HealthRestore:
+		UpgradeModifier->HealthRestoreCount++;
 		UpgradeModifier->RestoreHealth();
 		CurrentGameMode->UpgradeChosen();
 		break;
 	case EPlayerUpgrade::FireRateUpgrade:
 		UpgradeModifier->FireRateUpgradeCount++;
+		UpgradeModifier->IncreaseFireRate();
 		CurrentGameMode->UpgradeChosen();
 		break;
 	default: ;
@@ -103,6 +106,7 @@ void AUpgradeManager::UpgradeTwoChosen()
 	{
 	case EPlayerUpgrade::HealthUpgrade:
 		UpgradeModifier->HealthUpgradeCount++;
+		UpgradeModifier->UpgradeHealth();
 		CurrentGameMode->UpgradeChosen();
 		break;
 	case EPlayerUpgrade::SpeedUpgrade:
@@ -115,11 +119,13 @@ void AUpgradeManager::UpgradeTwoChosen()
 		CurrentGameMode->UpgradeChosen();
 		break;
 	case EPlayerUpgrade::HealthRestore:
+		UpgradeModifier->HealthRestoreCount++;
 		UpgradeModifier->RestoreHealth();
 		CurrentGameMode->UpgradeChosen();
 		break;
 	case EPlayerUpgrade::FireRateUpgrade:
 		UpgradeModifier->FireRateUpgradeCount++;
+		UpgradeModifier->IncreaseFireRate();
 		CurrentGameMode->UpgradeChosen();
 		break;
 	default: ;
@@ -132,6 +138,7 @@ void AUpgradeManager::UpgradeThreeChosen()
 	{
 	case EPlayerUpgrade::HealthUpgrade:
 		UpgradeModifier->HealthUpgradeCount++;
+		UpgradeModifier->UpgradeHealth();
 		CurrentGameMode->UpgradeChosen();
 		break;
 	case EPlayerUpgrade::SpeedUpgrade:
@@ -144,11 +151,13 @@ void AUpgradeManager::UpgradeThreeChosen()
 		CurrentGameMode->UpgradeChosen();
 		break;
 	case EPlayerUpgrade::HealthRestore:
+		UpgradeModifier->HealthRestoreCount++;
 		UpgradeModifier->RestoreHealth();
 		CurrentGameMode->UpgradeChosen();
 		break;
 	case EPlayerUpgrade::FireRateUpgrade:
 		UpgradeModifier->FireRateUpgradeCount++;
+		UpgradeModifier->IncreaseFireRate();
 		CurrentGameMode->UpgradeChosen();
 		break;
 	default: ;

@@ -112,7 +112,7 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void Die();
 	void Die_Implementation();
-
+	
 
 };
 

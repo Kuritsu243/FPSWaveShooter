@@ -27,31 +27,38 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	int HealthRestoreAmount;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	int HealthUpgradeModifier;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	float SpeedUpgradeModifier;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly);
 	int DamageUpgradeModifier;
-	UPROPERTY(EditAnywhere)
-	int FireRateModifier;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	float FireRateModifier;
 
 	
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	int HealthUpgradeCount;
 	UPROPERTY(BlueprintReadOnly)
 	int SpeedUpgradeCount;
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	int DamageUpgradeCount;
 	UPROPERTY(BlueprintReadOnly)
 	int FireRateUpgradeCount;
+	UPROPERTY(BlueprintReadOnly)
+	int HealthRestoreCount;
+
 	
 	UPROPERTY()
 	float SpeedUpgradeBaseVal;
 	UPROPERTY()
 	float DamageUpgradeBaseVal;
+	UPROPERTY()
+	float FireRateBaseVal;
+	UPROPERTY(EditAnywhere)
+	float TimeBetweenShots = 0.35f;
 	
 	UFUNCTION()
 	void RestoreHealth() const;
@@ -59,6 +66,8 @@ public:
 	void UpgradeHealth() const;
 	UFUNCTION()
 	void UpgradeSpeed();
+	UFUNCTION()
+	void IncreaseFireRate();
 
 	
 

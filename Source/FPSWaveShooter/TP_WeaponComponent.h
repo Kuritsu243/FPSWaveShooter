@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "UpgradeModifier.h"
 #include "Components/ActorComponent.h"
 #include "TP_WeaponComponent.generated.h"
 
@@ -14,6 +15,15 @@ class FPSWAVESHOOTER_API UTP_WeaponComponent : public UActorComponent
 	GENERATED_BODY()
 
 public:
+
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
+protected:
+	// Called when the game starts
+	virtual void BeginPlay() override;
+
+public:
+	
 	/** Projectile class to spawn */
 	UPROPERTY(EditDefaultsOnly, Category=Projectile)
 	TSubclassOf<class AFPSWaveShooterProjectile> ProjectileClass;
@@ -42,6 +52,24 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Weapon")
 	void Fire();
 
+	UFUNCTION()
+	void TimerCooldown();
+
+	
+	UPROPERTY()
+	FTimerHandle TimerHandle;
+
+	FTimerDelegate TimerDelegate;
+	UPROPERTY()
+	bool bIsInCooldown;
+	UPROPERTY()
+	float CooldownLength = 0.35f;
+	UPROPERTY()
+	bool bHasCollectedWeapon;
+
+	UPROPERTY()
+	UUpgradeModifier* UpgradeModifier;
+
 protected:
 	/** Ends gameplay for this component. */
 	UFUNCTION()
@@ -51,5 +79,6 @@ protected:
 private:
 	/** The Character holding this weapon*/
 	AFPSWaveShooterCharacter* Character;
+
 
 };

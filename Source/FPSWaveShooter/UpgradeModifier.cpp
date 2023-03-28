@@ -25,6 +25,7 @@ void UUpgradeModifier::BeginPlay()
 	PlayerHealth = Player->FindComponentByClass<UPlayerHealthComponent>();
 	SpeedUpgradeBaseVal = SpeedUpgradeModifier;
 	DamageUpgradeBaseVal = DamageUpgradeModifier;
+	FireRateBaseVal = FireRateModifier;
 
 	SpeedUpgradeModifier = 0.0f;
 	DamageUpgradeModifier = 0.0f;
@@ -51,13 +52,27 @@ void UUpgradeModifier::RestoreHealth() const
 
 void UUpgradeModifier::UpgradeHealth() const
 {
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, FString::Printf(TEXT("Max Health: %d"), PlayerHealth->MaxHealth));
 	PlayerHealth->MaxHealth += HealthUpgradeModifier;
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, FString::Printf(TEXT("Max Upgraded Health: %d"), PlayerHealth->MaxHealth));
 	PlayerHealth->CurrentHealth += HealthUpgradeModifier;
 }
 
 void UUpgradeModifier::UpgradeSpeed() 
 {
 	SpeedUpgradeModifier += SpeedUpgradeBaseVal;
+}
+
+void UUpgradeModifier::IncreaseFireRate()
+{
+	if (TimeBetweenShots >= 0.05 && TimeBetweenShots - FireRateModifier >= 0.05)
+	{
+		TimeBetweenShots -= FireRateModifier;
+	}
+	else
+	{
+		TimeBetweenShots = 0.05f;
+	}
 }
 
 
