@@ -82,8 +82,6 @@ public:
 	void GenNewLocations();
 	UFUNCTION()
 	void AppendSpawnPoints(int Amount);
-	UFUNCTION()
-	FVector GetPosWithinBounds(FVector Box) const;
 
 
 

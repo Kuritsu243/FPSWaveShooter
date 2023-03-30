@@ -26,6 +26,7 @@ void AWaveSpawner::BeginPlay()
 	if (!bIsEnabled) return; 
 	SetBounds();
 	InitSpawnPoints();
+	GenNewLocations();
 	// UpgradeGenerator = Cast<UUpgradeModifier>(Player);
 	//
 	GetGameInstance()->TimerManager->SetTimer(TimerHandle, this, &AWaveSpawner::SpawnEnemies, SpawnTime, true);
@@ -40,9 +41,10 @@ void AWaveSpawner::Tick(float DeltaTime)
 
 void AWaveSpawner::SpawnEnemies()
 {
-	GenNewLocations();
+	// GenNewLocations();
 	for (auto i = 0; i <= NoToSpawn; i++)
 	{
+		GenNewLocations();
 		ChosenPoint = RandomizeSpawn();
 		auto PointLocation = ChosenPoint->GetActorLocation();
 		auto PointRotation = ChosenPoint->GetActorRotation();
@@ -74,8 +76,8 @@ void AWaveSpawner::InitSpawnPoints()
 		NewPoint->SetActorRotation(FRotator(0));
 		SpawnPoints.Add(NewPoint);
 		if (SpawnPoints.Num() == 0) return;
-		GenNewLocations();
 	}
+	GenNewLocations();
 }
 
 FVector AWaveSpawner::NewSpawnLocation()
@@ -84,8 +86,9 @@ FVector AWaveSpawner::NewSpawnLocation()
 	do
 	{
 		bHasBeenCalledYet = true;
-		RandomPos = GetPosWithinBounds(FloorBounds.BoxExtent);
-		RandomPos.Z = 90;
+		const auto Box = FloorBounds.BoxExtent;
+		RandomPos = FloorBounds.Origin + FVector(FMath::FRandRange(-Box.X, Box.X),
+			FMath::FRandRange(-Box.Y, Box.Y), 15);
 	}
 	while (!bHasBeenCalledYet && ((RandomPos - Player->GetActorScale()).Size() < MinDistToPlayer));
 	return RandomPos;
@@ -106,17 +109,11 @@ void AWaveSpawner::AppendSpawnPoints(int Amount)
 	for (auto k = 0; k < Amount; k++)
 	{
 		ATargetPoint* NewPoint = GetWorld()->SpawnActor<ATargetPoint>(ATargetPoint::StaticClass());
-		NewPoint->SetActorLocation(FVector::Zero());
+		NewPoint->SetActorLocation(FVector(0, 0, 15));
 		NewPoint->SetActorRotation(FRotator(0));
 		SpawnPoints.Add(NewPoint);
 		GenNewLocations();
 	}
-}
-
-FVector AWaveSpawner::GetPosWithinBounds(FVector Box) const
-{
-	const auto ChosenXYZ = FVector(FMath::FRandRange(-Box.X, Box.X), FMath::FRandRange(-Box.Y, Box.Y), 90);
-	return FloorBounds.Origin + ChosenXYZ;
 }
 
 

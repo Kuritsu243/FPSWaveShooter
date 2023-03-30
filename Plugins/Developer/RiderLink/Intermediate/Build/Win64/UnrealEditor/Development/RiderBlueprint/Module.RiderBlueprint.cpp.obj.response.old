@@ -1,6 +1,6 @@
-"H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UnrealEditor\Development\RiderBlueprint\Module.RiderBlueprint.cpp"
+"E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UnrealEditor\Development\RiderBlueprint\Module.RiderBlueprint.cpp"
 /I .
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RiderBlueprint\Private"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RiderBlueprint\Private"
 /I Runtime
 /I Runtime\TraceLog\Public
 /I Runtime\Core\Public
@@ -14,25 +14,25 @@
 /I Runtime\ApplicationCore\Public
 /I Runtime\RHI\Public
 /I Runtime\Json\Public
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RiderLink\Public\Model\Library"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RiderLink\Public\Model\RdEditorProtocol"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RiderLink\Public"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\src"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\src\rd_core_cpp"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\src\rd_core_cpp\src\main"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\src\rd_framework_cpp"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\src\rd_framework_cpp\src\main"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\src\rd_framework_cpp\src\main\util"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\src\rd_gen_cpp\src"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty\ordered-map\include"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty\optional\tl"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty\variant\include"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty\string-view-lite\include"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty\spdlog\include"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty\clsocket\src"
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty\CTPL\include"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RiderLink\Public\Model\Library"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RiderLink\Public\Model\RdEditorProtocol"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RiderLink\Public"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\src"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\src\rd_core_cpp"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\src\rd_core_cpp\src\main"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\src\rd_framework_cpp"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\src\rd_framework_cpp\src\main"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\src\rd_framework_cpp\src\main\util"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\src\rd_gen_cpp\src"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty\ordered-map\include"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty\optional\tl"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty\variant\include"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty\string-view-lite\include"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty\spdlog\include"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty\clsocket\src"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RD\thirdparty\CTPL\include"
 /I ..\Intermediate\Build\Win64\UnrealEditor\Inc\Slate
 /I Runtime\Slate\Public
 /I Runtime\ImageWrapper\Public
@@ -271,7 +271,7 @@
 /I ..\Intermediate\Build\Win64\UnrealEditor\Inc\AIModule
 /I Runtime\AIModule\Public
 /I Runtime\AIModule\Classes
-/I "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RiderBlueprint\Public"
+/I "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Source\RiderBlueprint\Public"
 /I ThirdParty\mimalloc\include
 /I ThirdParty\LibTiff\Source\Win64
 /I ThirdParty\LibTiff\Source
@@ -287,14 +287,14 @@
 /I ThirdParty\PhysX3\PhysX_3.4\Include\extensions
 /I ThirdParty\PhysX3\PhysX_3.4\Include\geometry
 /I "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE"
-/I "C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"
-/I "C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt"
-/I "C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared"
-/I "C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um"
-/I "C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt"
-/FI"H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UnrealEditor\Development\RiderBlueprint\Definitions.h"
-/Fo"H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UnrealEditor\Development\RiderBlueprint\Module.RiderBlueprint.cpp.obj"
-/sourceDependencies "H:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UnrealEditor\Development\RiderBlueprint\Module.RiderBlueprint.cpp.json"
+/I "C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8.1\include\um"
+/I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\ucrt"
+/I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\shared"
+/I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\um"
+/I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\winrt"
+/FI"E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UnrealEditor\Development\RiderBlueprint\Definitions.h"
+/Fo"E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UnrealEditor\Development\RiderBlueprint\Module.RiderBlueprint.cpp.obj"
+/sourceDependencies "E:\UE5 Projects\FPSWaveShooter\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UnrealEditor\Development\RiderBlueprint\Module.RiderBlueprint.cpp.json"
 /Zc:inline
 /nologo
 /Oi
