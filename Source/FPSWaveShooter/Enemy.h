@@ -30,6 +30,8 @@ public:
 	float MoveSpeed;
 	UPROPERTY()
 	ACharacter* Player;
+	UPROPERTY(EditAnywhere)
+	bool bCanMove = true;
 	UPROPERTY()
 	FVector PlayerLocation;
 	UPROPERTY(EditAnywhere)

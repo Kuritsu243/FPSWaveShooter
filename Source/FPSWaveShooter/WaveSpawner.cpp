@@ -41,6 +41,7 @@ void AWaveSpawner::Tick(float DeltaTime)
 
 void AWaveSpawner::SpawnEnemies()
 {
+	if (!bIsEnabled) return;
 	// GenNewLocations();
 	for (auto i = 0; i <= NoToSpawn; i++)
 	{

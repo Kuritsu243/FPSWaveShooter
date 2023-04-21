@@ -38,7 +38,7 @@ void AEnemy::Tick(float DeltaTime)
 void AEnemy::MoveToPlayer()
 {
 	if (!Player) return;
-
+	if (!bCanMove) return;
 	PlayerLocation = Player->GetActorLocation();
 	EnemyPos = GetActorLocation();
 	DirToPlayer = (PlayerLocation - EnemyPos).GetSafeNormal();
