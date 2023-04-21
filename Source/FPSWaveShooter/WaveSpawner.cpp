@@ -41,6 +41,7 @@ void AWaveSpawner::Tick(float DeltaTime)
 
 void AWaveSpawner::SpawnEnemies()
 {
+	if (!bIsEnabled) return;
 	// GenNewLocations();
 	for (auto i = 0; i <= NoToSpawn; i++)
 	{
@@ -109,7 +110,7 @@ void AWaveSpawner::AppendSpawnPoints(int Amount)
 	for (auto k = 0; k < Amount; k++)
 	{
 		ATargetPoint* NewPoint = GetWorld()->SpawnActor<ATargetPoint>(ATargetPoint::StaticClass());
-		NewPoint->SetActorLocation(FVector(0, 0, 15));
+		NewPoint->SetActorLocation(FVector(0, 0, 50));
 		NewPoint->SetActorRotation(FRotator(0));
 		SpawnPoints.Add(NewPoint);
 		GenNewLocations();

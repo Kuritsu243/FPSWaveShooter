@@ -17,10 +17,9 @@ AFPSWaveShooterCharacter::AFPSWaveShooterCharacter()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
-
+	
 	// set our turn rates for input
 	TurnRateGamepad = 45.f;
-
 	// Create a CameraComponent	
 	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
 	FirstPersonCameraComponent->SetupAttachment(GetCapsuleComponent());
@@ -43,7 +42,7 @@ void AFPSWaveShooterCharacter::BeginPlay()
 	// Call the base class  
 	Super::BeginPlay();
 	UpgradeModifierComponent =  UGameplayStatics::GetPlayerCharacter(GetWorld(), 0)->FindComponentByClass<UUpgradeModifier>();
-
+	auto test = GetActorLocation();
 }
 
 //////////////////////////////////////////////////////////////////////////// Input

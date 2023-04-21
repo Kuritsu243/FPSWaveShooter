@@ -3,6 +3,7 @@
 
 #include "EnemyHealthComponent.h"
 
+#include "Enemy.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values for this component's properties
@@ -23,7 +24,7 @@ void UEnemyHealthComponent::BeginPlay()
 
 	EnemyCurrentHealth = EnemyMaxHealth;
 	EnemyActor = GetOwner();
-
+	EnemyScript = Cast<AEnemy>(EnemyActor);
 	WaveGameModeBase = UGameplayStatics::GetGameMode(GetWorld());
 	WaveGameMode = Cast<AFPSWaveShooterGameMode>(WaveGameModeBase);
 	
@@ -42,6 +43,8 @@ void UEnemyHealthComponent::TakeDamage(int DamageAmount)
 void UEnemyHealthComponent::Die() const
 {
 	WaveGameMode->EnemyDefeated();
+	if (EnemyScript->WillDropPowerUp())
+		EnemyScript->SpawnPowerUp();
 	EnemyActor->Destroy();
 }
 

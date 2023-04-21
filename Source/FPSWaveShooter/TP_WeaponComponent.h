@@ -65,7 +65,11 @@ public:
 	UPROPERTY()
 	float CooldownLength = 0.35f;
 	UPROPERTY()
+	float RapidFireCooldown = 0.05f;
+	UPROPERTY()
 	bool bHasCollectedWeapon;
+	UPROPERTY()
+	bool bIsRapidFirePowerUp;
 
 	UPROPERTY()
 	UUpgradeModifier* UpgradeModifier;

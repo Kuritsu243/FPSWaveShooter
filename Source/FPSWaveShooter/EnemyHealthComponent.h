@@ -8,6 +8,7 @@
 #include "EnemyHealthComponent.generated.h"
 
 
+class AEnemy;
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class FPSWAVESHOOTER_API UEnemyHealthComponent : public UActorComponent
 {
@@ -35,6 +36,8 @@ public:
 	AGameModeBase* WaveGameModeBase;
 	UPROPERTY()
 	AFPSWaveShooterGameMode* WaveGameMode;
+	UPROPERTY()
+	AEnemy* EnemyScript;
 
 	UFUNCTION()
 	void TakeDamage(int DamageAmount);

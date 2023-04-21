@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "PowerUp.h"
 #include "GameFramework/Actor.h"
 #include "Enemy.generated.h"
 
@@ -30,6 +31,8 @@ public:
 	float MoveSpeed;
 	UPROPERTY()
 	ACharacter* Player;
+	UPROPERTY(EditAnywhere)
+	bool bCanMove = true;
 	UPROPERTY()
 	FVector PlayerLocation;
 	UPROPERTY(EditAnywhere)
@@ -56,6 +59,14 @@ public:
 	void StartDamageCooldown();
 	UFUNCTION()
 	void EndDamageCooldown();
+	UFUNCTION()
+	bool WillDropPowerUp() const;
+	UPROPERTY(EditAnywhere)
+	int PowerUpChance;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<APowerUp> PowerUpClass;
+	UFUNCTION()
+	void SpawnPowerUp() const;
 
 
 

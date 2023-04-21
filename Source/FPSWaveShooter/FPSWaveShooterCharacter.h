@@ -18,6 +18,8 @@ class USoundBase;
 // It is declared as dynamic so it can be accessed also in Blueprints
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnUseItem);
 
+
+
 UCLASS(config=Game)
 class AFPSWaveShooterCharacter : public ACharacter
 {
@@ -109,6 +111,10 @@ public:
 	UPROPERTY()
 	UUpgradeModifier* UpgradeModifierComponent;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	bool bIsInstantKill;
+	UPROPERTY(EditAnywhere)
+	bool bIsRapidFire;
 	UFUNCTION(BlueprintImplementableEvent)
 	void Die();
 	void Die_Implementation();

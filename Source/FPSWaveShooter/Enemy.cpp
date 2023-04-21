@@ -38,7 +38,7 @@ void AEnemy::Tick(float DeltaTime)
 void AEnemy::MoveToPlayer()
 {
 	if (!Player) return;
-
+	if (!bCanMove) return;
 	PlayerLocation = Player->GetActorLocation();
 	EnemyPos = GetActorLocation();
 	DirToPlayer = (PlayerLocation - EnemyPos).GetSafeNormal();
@@ -68,4 +68,17 @@ void AEnemy::EndDamageCooldown()
 {
 	bCanDamage = true;
 }
+
+bool AEnemy::WillDropPowerUp() const
+{
+	if (const auto RandomNum = FMath::RandRange(0, 100); RandomNum <= PowerUpChance)
+		return true;
+	return false;
+}
+
+void AEnemy::SpawnPowerUp() const
+{
+	GetWorld()->SpawnActor<AActor>(PowerUpClass, GetActorLocation(), GetActorRotation());
+}
+
 

@@ -69,7 +69,10 @@ void UTP_WeaponComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 				// Spawn the projectile at the muzzle
 				SpawnedProjectile = World->SpawnActor<AFPSWaveShooterProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
 				bIsInCooldown = true;
-				GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, UpgradeModifier->TimeBetweenShots, false);
+				if (Character->bIsRapidFire)
+					GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, RapidFireCooldown, false);
+				else
+					GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, UpgradeModifier->TimeBetweenShots, false);
 			}
 		}
 		return;

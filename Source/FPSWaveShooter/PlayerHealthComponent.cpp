@@ -33,7 +33,7 @@ void UPlayerHealthComponent::DamagePlayer(float DamageAmount)
 
 	if (CurrentHealth<= 0)
 	{
-
+		// PlayerDeathEvent.Broadcast();
 	}
 }
 
