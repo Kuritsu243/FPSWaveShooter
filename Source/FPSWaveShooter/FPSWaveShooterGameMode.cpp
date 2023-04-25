@@ -1,10 +1,14 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "FPSWaveShooterGameMode.h"
+
+#include "Enemy.h"
 #include "FPSWaveShooterCharacter.h"
 #include "WaveSpawner.h"
 #include "Blueprint/UserWidget.h"
+#include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Blueprint/WidgetLayoutLibrary.h"
+#include "Components/WidgetComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
 
@@ -82,5 +86,36 @@ void AFPSWaveShooterGameMode::UpgradeChosen()
 	UGameplayStatics::SetGamePaused(GetWorld(), false);
 	UGameplayStatics::GetPlayerCharacter(this, 0);
 
+	
+}
+
+void AFPSWaveShooterGameMode::PlayerDeath()
+{
+	bIsPlayerDead = true;
+	GameplayUI->RemoveFromViewport();
+	DeathUI = CreateWidget(GetWorld(), DeathUIClass);
+	DeathUI->AddToViewport();
+	GetWorld()->GetFirstPlayerController()->bShowMouseCursor = true;
+	UGameplayStatics::SetGamePaused(GetWorld(), true);
+
+	TArray<AActor*> Enemies;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AEnemy::StaticClass(), Enemies);
+	if (Enemies.Num() > 0)
+	{
+		for (const auto Enemy : Enemies)
+			Enemy->Destroy();
+	}
+
+
+	TArray<AActor*> CurrentWaveSpawners;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AWaveSpawner::StaticClass(), CurrentWaveSpawners);
+	if (CurrentWaveSpawners.Num() > 0)
+	{
+		for (const auto CurrentWaveSpawner : CurrentWaveSpawners)
+			CurrentWaveSpawner->Destroy();
+	}
+
+	
+	
 	
 }

@@ -9,6 +9,7 @@
 
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FNewWave);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FPlayerDeath);
 
 UENUM()
 enum EWaveUpgrades
@@ -67,17 +68,30 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintAssignable)
 	FNewWave NewWaveSteps;
 
+	UPROPERTY(EditAnywhere, BlueprintAssignable)
+	FPlayerDeath PlayerDeathEvent;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<UUserWidget> UpgradesUIClass;
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UUserWidget> GameplayUIClass;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UUserWidget> DeathUIClass;
 	
 	UPROPERTY()
 	UUserWidget* UpgradesUI;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	UUserWidget* GameplayUI;
+
+	UPROPERTY()
+	UUserWidget* DeathUI;
+
+	UPROPERTY()
+	UUserWidget* CurrentUI;
+
 	
 	UFUNCTION(BlueprintCallable)
 	void ShowUpgradesUI();
@@ -85,10 +99,15 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void UpgradeChosen();
 
+	UFUNCTION(BlueprintCallable)
+	void PlayerDeath();
+
 
 	UPROPERTY()
 	UGameInstance* GameInstance;
 
+	UPROPERTY()
+	bool bIsPlayerDead;
 
 	
 

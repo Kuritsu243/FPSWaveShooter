@@ -3,6 +3,7 @@
 
 #include "PlayerHealthComponent.h"
 
+#include "FPSWaveShooterGameMode.h"
 #include "GameFramework/GameModeBase.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -33,7 +34,13 @@ void UPlayerHealthComponent::DamagePlayer(float DamageAmount)
 
 	if (CurrentHealth<= 0)
 	{
+		const auto GameMode = UGameplayStatics::GetGameMode(GetWorld());
+		if (!GameMode) return;
+		const auto GameModeClass = Cast<AFPSWaveShooterGameMode>(GameMode);
+		if (!GameModeClass) return;
+		if (GameModeClass->bIsPlayerDead) return;
 		// PlayerDeathEvent.Broadcast();
+		GameModeClass->PlayerDeath();
 	}
 }
 
